@@ -214,3 +214,38 @@ a {
   opacity: 0;
   pointer-events: none;
 }
+
+/* Range slider (lift reach) */
+.gf-range {
+  appearance: none;
+  height: 44px;
+  background: transparent;
+  cursor: pointer;
+}
+.gf-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--cream) 22%, transparent);
+}
+.gf-range::-moz-range-track {
+  height: 4px;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--cream) 22%, transparent);
+}
+.gf-range::-webkit-slider-thumb {
+  appearance: none;
+  margin-top: -12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 99px;
+  background: var(--red);
+  border: 3px solid var(--cream);
+  box-shadow: 0 6px 18px -6px rgb(0 0 0 / 0.6);
+}
+.gf-range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 99px;
+  background: var(--red);
+  border: 3px solid var(--cream);
+}

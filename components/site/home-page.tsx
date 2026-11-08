@@ -7,6 +7,7 @@ import { HomeHero } from "./home-hero"
 import { Faq, PhotoReveal, Reveal, SiteVideo } from "./motion"
 import { Btn, Container, tidy } from "./primitives"
 import { ServiceIndex } from "./service-index"
+import { ProcessStory } from "./process-story"
 import { CtaBand } from "./blocks"
 
 const ps = (b: Body[]) => b.filter((x): x is { p: string } => "p" in x && !("box" in x)).map((x) => x.p)
@@ -105,6 +106,8 @@ export function HomePage({ locale }: { locale: Locale }) {
           </div>
         </Container>
       </section>
+
+      <ProcessStory locale={locale} />
 
       {/* Services index */}
       <section className="bg-paper pb-24 sm:pb-32">

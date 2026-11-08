@@ -8,6 +8,8 @@ import { Gallery } from "./gallery"
 import { Faq, Reveal } from "./motion"
 import { Container, tidy } from "./primitives"
 import { QuoteForm } from "./quote-form"
+import { VolumeCalculator } from "./volume-calculator"
+import { LiftReach } from "./lift-reach"
 
 const firstP = (body: { p?: string }[]) => body.find((b) => b.p)?.p
 
@@ -47,7 +49,8 @@ export function RoutePage({ locale, slug }: { locale: Locale; slug: string }) {
                 {page.intro.map((b, i) => ("p" in b && !("box" in b) ? <p key={i}>{b.p}</p> : null))}
               </div>
             </div>
-            <div className="lg:col-span-8">
+            <div className="grid min-w-0 gap-12 lg:col-span-8">
+              <VolumeCalculator locale={locale} />
               <QuoteForm locale={locale} />
             </div>
           </Container>
@@ -196,7 +199,8 @@ export function RoutePage({ locale, slug }: { locale: Locale; slug: string }) {
           </div>
         </Container>
       )}
-      <ContentSections locale={locale} sections={page.sections} fallbackImages={pool} />
+      {slug === "location-de-lift" && <LiftReach locale={locale} />}
+      <ContentSections locale={locale} sections={slug === "location-de-lift" ? page.sections.filter((s) => s.level !== 1) : page.sections} fallbackImages={pool} />
       {faqFromSections.length > 0 && (
         <section className="bg-paper py-20 sm:py-28">
           <Container className="grid gap-12 lg:grid-cols-12">

@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { Phone } from "lucide-react"
+import { MessageCircle, Phone } from "lucide-react"
 import FolioFoldMenu, { type FoldLink } from "@/components/ui/folio-fold-menu"
 import { href, locales, parsePath, type Locale } from "@/lib/i18n"
 import { company, dict, menuLabels } from "@/lib/site"
@@ -136,6 +136,20 @@ export function SiteShell({ locale, children }: { locale: Locale; children: Reac
           {children}
         </div>
 
+        {/* WhatsApp, always one tap away (desktop) */}
+        <a
+          href={company.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp"
+          className="group absolute bottom-6 right-6 z-[4] hidden h-14 items-center gap-0 overflow-hidden rounded-full bg-[#1f8f4e] pl-4 pr-4 text-cream shadow-[0_14px_34px_-14px_rgb(0_0_0/0.7)] transition-[gap,padding] duration-500 ease-[var(--ease-out)] hover:gap-2.5 hover:pr-5 sm:inline-flex"
+        >
+          <MessageCircle className="size-6 shrink-0" strokeWidth={1.75} aria-hidden />
+          <span className="max-w-0 overflow-hidden whitespace-nowrap text-[15px] font-semibold transition-[max-width] duration-500 ease-[var(--ease-out)] group-hover:max-w-[160px]">
+            WhatsApp
+          </span>
+        </a>
+
         {/* Thumb-reach actions on phones */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[4] flex gap-2 p-3 sm:hidden">
           <a
@@ -144,6 +158,15 @@ export function SiteShell({ locale, children }: { locale: Locale; children: Reac
           >
             <Phone className="size-4" strokeWidth={1.75} aria-hidden />
             {t.call}
+          </a>
+          <a
+            href={company.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            className="pointer-events-auto grid size-12 shrink-0 place-items-center rounded-full bg-[#1f8f4e] text-cream shadow-[0_10px_30px_-12px_rgb(0_0_0/0.7)]"
+          >
+            <MessageCircle className="size-5" strokeWidth={1.75} aria-hidden />
           </a>
           <Link
             href={href(locale, "devis-demenagement")}
