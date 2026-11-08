@@ -1,0 +1,260 @@
+{
+ "slug": "home",
+ "seoTitle": "Removals in Brussels | Gérard & Fils | 30+ years of experience",
+ "seoDesc": "Looking for a removal company in Brussels? Call on Gérard & Fils, your experienced removers. Free quote and full-service moving.",
+ "h1": "Gérard & Fils,",
+ "intro": [],
+ "sections": [
+  {
+   "h": "your partner for moving in Brussels, across Belgium and abroad",
+   "level": 1,
+   "body": []
+  },
+  {
+   "h": "Your removal company in Brussels",
+   "level": 2,
+   "body": [
+    {
+     "p": "For more than 30 years, our family business has helped individuals and companies with their moves in Brussels, whether it is a change of address elsewhere in Belgium or a move abroad. Thanks to solid experience gained in the field, we offer reliable services tailored to every situation, whatever the neighbourhood or type of building. Our commitment: to give you a rigorous, discreet and fully mastered service, wherever you are in the Brussels region."
+    },
+    {
+     "p": "From packing your belongings to the secure transport of your goods, you can trust our team of removers to deliver the service you expect, on schedule and within your budget."
+    },
+    {
+     "p": "We are equipped to handle every stage of your move in Brussels, from the simplest to the most complex. Request your free, detailed quote and benefit from our expertise."
+    }
+   ],
+   "imgs": [
+    "service-lift-vue-plongeante-scaled-1.jpeg"
+   ]
+  },
+  {
+   "h": "Our quality services",
+   "level": 2,
+   "body": [
+    {
+     "p": "Entrust your move to professional removers and enjoy a complete service, whether you are a private individual or a business, in Brussels or abroad. We guarantee a high-quality, careful and personalised service, carried out with full respect for the safety of goods and people."
+    }
+   ]
+  },
+  {
+   "h": "Cutting-edge expertise for piano moving",
+   "level": 3,
+   "body": [
+    {
+     "p": "Bulky, fragile and expensive, a piano calls for special precautions and the full expertise of specialist removers for a trouble-free move. Our team masters the latest and most effective techniques to move your instrument with complete peace of mind."
+    }
+   ],
+   "cta": {
+    "label": "Piano moving",
+    "slug": "demenagement-piano"
+   }
+  },
+  {
+   "h": "Our skills for private individuals…",
+   "level": 3,
+   "body": [
+    {
+     "p": "From packing your belongings into boxes to dismantling and reassembling your furniture, our team of removers is at your service in every municipality of Brussels and throughout Belgium, whether you live in a house or an apartment. We also help you with the administrative formalities."
+    }
+   ],
+   "cta": {
+    "label": "Moving for private individuals",
+    "slug": "demenagement-de-particulier"
+   }
+  },
+  {
+   "h": "... and for businesses",
+   "level": 3,
+   "body": [
+    {
+     "p": "Do you need to move your offices or your shop? Call on our expertise: from handling to putting your equipment and furniture back in place, we ensure that every operation runs impeccably and strictly to the agreed deadlines."
+    }
+   ],
+   "cta": {
+    "label": "Office removals",
+    "slug": "demenagement-bureau"
+   }
+  },
+  {
+   "h": "Entrust us with your move anywhere in Belgium…",
+   "level": 3,
+   "body": [
+    {
+     "p": "Are you planning to move to one of the 19 municipalities of Brussels or to another Belgian region? Call on Gérard & Fils, your trusted removal company. Every move brings its share of stress. Our professionals take that burden off your shoulders and support you through this new stage of your life, from packing your personal belongings to their arrival at their destination."
+    }
+   ],
+   "cta": {
+    "label": "National moves",
+    "slug": "demenagements-nationaux"
+   }
+  },
+  {
+   "h": "... and across Europe",
+   "level": 3,
+   "body": [
+    {
+     "p": "Are you leaving Belgium to settle abroad? We handle every step from A to Z so that your move goes as smoothly as possible. We take you anywhere in Europe by truck with complete peace of mind and personalised support."
+    }
+   ],
+   "cta": {
+    "label": "International moves",
+    "slug": "demenagements-internationaux"
+   }
+  },
+  {
+   "h": "Our additional services in Brussels",
+   "level": 3,
+   "body": [
+    {
+     "p": "Besides the transport and packing of your goods, we offer a full range of extra services, from furniture storage rental to our furniture lift service and post-move cleaning. We also provide tailor-made solutions for every situation, whether for a residential or a commercial move in Brussels and throughout Belgium. Our teams can take care of dismantling and reassembling your furniture, as well as handling fragile or bulky items. Our aim is to give you a complete, smooth and stress-free service from start to finish."
+    }
+   ]
+  },
+  {
+   "h": "Secure furniture storage",
+   "level": 2,
+   "body": [
+    {
+     "p": "Do you need to store some of your belongings for a fixed or open-ended period? Discover our storage solutions and leave your personal effects in the care of our fully secure, climate-controlled furniture storage."
+    }
+   ],
+   "cta": {
+    "label": "Discover our furniture storage",
+    "slug": "garde-meubles"
+   }
+  },
+  {
+   "h": "Waste disposal at the recycling centre",
+   "level": 3,
+   "body": [
+    {
+     "p": "We step in to remove your bulky items, waste and everything you are not taking with you quickly and cleanly. You can also leave the cleaning of the premises to our team once everything has been cleared."
+    }
+   ],
+   "cta": {
+    "label": "Recycling centre service",
+    "slug": "dechetterie-vide-maison-nettoyage"
+   }
+  },
+  {
+   "h": "Hire of a suitable furniture lift",
+   "level": 3,
+   "body": [
+    {
+     "p": "We provide the secure transport of furniture whose dimensions do not allow it to go up the stairs or in the lift. Our furniture lift hire service suits any floor height and also allows us to work in hard-to-reach areas. Entrust your furniture to us for a stress-free move!"
+    }
+   ],
+   "cta": {
+    "label": "Hire a furniture lift for your move",
+    "slug": "location-de-lift"
+   }
+  },
+  {
+   "h": "",
+   "level": 2,
+   "kind": "boxes",
+   "body": [
+    {
+     "box": "The expertise of a removal company approved by the CBD",
+     "p": ""
+    },
+    {
+     "box": "State-of-the-art equipment",
+     "p": ""
+    },
+    {
+     "box": "A personalised service tailored to your needs",
+     "p": ""
+    },
+    {
+     "box": "A detailed, free quote with no surprises",
+     "p": ""
+    }
+   ]
+  },
+  {
+   "h": "Why choose us for your move",
+   "level": 2,
+   "body": [
+    {
+     "p": "Our approved company provides tailor-made services that respect your expectations, deadlines and budget. As an approved member of the Belgian Chamber of Removers (CBD), our company is committed to meeting your every requirement and to following a clearly defined quality charter:"
+    },
+    {
+     "ul": [
+      "providing an impeccable service with equipment that meets current technical standards;",
+      "giving clear prices with no surprises in a detailed quote;",
+      "working with a professional, qualified team that receives ongoing training;",
+      "providing precise information on insurance arrangements."
+     ]
+    }
+   ],
+   "imgs": [
+    "piano-emballage-lift-exterieur-1.jpeg",
+    "camion-lift-quartier-residentiel-scaled-1.jpeg"
+   ]
+  },
+  {
+   "h": "Your move anywhere in the capital",
+   "level": 3,
+   "body": [
+    {
+     "p": "Planning a change of address to Schaerbeek? Our team knows the specific features of this municipality perfectly: one-way streets, multi-storey buildings, heavy traffic… We organise your move smoothly, taking these constraints into account and scrupulously respecting your expectations."
+    },
+    {
+     "p": "You can also count on us for a move in Ixelles. Whether you are settling into a flat in the centre or a house near the ponds, we adapt our service to your situation. Discreetly and efficiently, we support you at every step, from first contact to final installation."
+    },
+    {
+     "p": "And if you are planning to settle in Jette, we are at your service there too. Our teams of removers work regularly in this Brussels municipality, with rigorous organisation and great attention to the safety of your belongings. For individuals and professionals alike, we provide a reliable and punctual service."
+    },
+    {
+     "p": "In fact, Gérard & Fils works in all the municipalities of the Brussels region, with the same seriousness and punctuality. In Forest, a municipality in full transformation where old buildings and new residential projects sit side by side, we know how to cope with sometimes narrow access and limited parking. In Auderghem, a green residential municipality on the edge of the Sonian Forest, our teams are used to houses with gardens and routes that call for good logistical coordination."
+    },
+    {
+     "p": "In Etterbeek, close to the European institutions, we support both individuals and professionals who need to move offices or apartments in a dense, lively neighbourhood. In Uccle, a large and hilly municipality, we adapt our organisation to the big houses and residential neighbourhoods that characterise it. In Watermael-Boitsfort, with its wooded setting and often detached housing, our team takes care to preserve the peace of the neighbourhood throughout the move. Finally, in the residential areas of Woluwe, with their wide avenues and fine properties, we provide a service that lives up to our customers' expectations, with the same care given to every move, whether it is a studio or a family home."
+    }
+   ]
+  },
+  {
+   "h": "Would you like a quote for your move?",
+   "level": 2,
+   "body": [
+    {
+     "p": "Are you preparing a move in Brussels and would like more information about our packages, our prices or our tailor-made support? Contact Gérard & Fils now! Fill in our online form to receive a personalised quote, or call us on 0484 / 13 16 81 or 02 / 215 08 46. Our team guides you through every stage of your move with clear, efficient solutions suited to your budget. Benefit from the expertise of professional removers for a service you can rely on."
+    },
+    {
+     "p": "Yes, every move is different. We adapt our services to your needs: packing, furniture dismantling, transport of fragile or bulky items, furniture storage or furniture lift. You get a personalised solution."
+    },
+    {
+     "p": "We are based in Brussels and know all its municipalities inside out, such as Schaerbeek, Ixelles, Jette, Uccle and Anderlecht, which allows us to step in quickly and efficiently throughout the region. However, our services are not limited to the capital. We also organise moves throughout Belgium, whether to Wallonia or Flanders, as well as international moves to neighbouring countries and beyond. Thanks to our experience and logistics network, we can handle every project to the same quality standard, whatever the distance."
+    },
+    {
+     "p": "You can easily reach us by phone or through our online form. We assess your needs and send you a clear, prompt quote with no obligation."
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Why choose Gerard & Fils for your move in Brussels?",
+   "a": "We bring you several years of experience in moving in Brussels. Our team provides complete support, from quote to delivery, with professionalism, punctuality and care. Our goal is to make your move simple, quick and stress-free."
+  },
+  {
+   "q": "Do you offer tailor-made moves?",
+   "a": "Yes, every move is different. We adapt our services to your needs: packing, furniture dismantling, transport of fragile or bulky items, furniture storage or furniture lift. You get a personalised solution."
+  },
+  {
+   "q": "Do you only work in Brussels?",
+   "a": "We are based in Brussels and know all its municipalities inside out, such as Schaerbeek, Ixelles, Jette, Uccle and Anderlecht, which allows us to step in quickly and efficiently throughout the region. However, our services are not limited to the capital. We also organise moves throughout Belgium, whether to Wallonia or Flanders, as well as international moves to neighbouring countries and beyond. Thanks to our experience and logistics network, we can handle every project to the same quality standard, whatever the distance."
+  },
+  {
+   "q": "How do I get a quote for my move?",
+   "a": "Contact us by phone on 0484 13 16 81 or 02 215 08 46, or fill in our online quote request form. We assess your project (volume, access, floors, options required) and quickly send you a free, detailed quote with no surprises."
+  }
+ ],
+ "images": [
+  "service-lift-vue-plongeante-scaled-1.jpeg",
+  "piano-emballage-lift-exterieur-1.jpeg",
+  "camion-lift-quartier-residentiel-scaled-1.jpeg"
+ ]
+}

@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Déménagement Gérard & Fils — nouveau site
 
-## Getting Started
+Refonte du site www.demenagementgerardetfils.be : même arborescence, même contenu, nouvelle mise en forme, en **FR / NL / EN**.
 
-First, run the development server:
+## Stack
+- Next.js 15 (App Router, export statique) · TypeScript · Tailwind CSS v4
+- Structure **shadcn** (`components.json`, `lib/utils.ts`, `components/ui/`)
+- GSAP (menu pliant `FolioFoldMenu`) · Framer Motion (intro, révélations, FAQ, galerie) · lucide-react
 
+## Pourquoi `components/ui`
+Le CLI shadcn installe et met à jour ses composants dans le dossier défini par `aliases.ui` (`@/components/ui`).
+Garder les composants « de base » (comme `folio-fold-menu.tsx`) dans ce dossier permet :
+- d’ajouter d’autres composants shadcn plus tard sans conflit (`npx shadcn add button`) ;
+- de séparer les briques génériques (`components/ui`) des sections propres au site (`components/site`) ;
+- de garder les imports `@/components/ui/...` attendus par les exemples shadcn.
+
+Installation from scratch (si besoin) :
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx create-next-app@latest --ts --tailwind --app
+npx shadcn@latest init
+npm i gsap framer-motion lucide-react
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Arborescence
+```
+app/(fr)/…            FR : mêmes URL que le site actuel (/demenagement-piano/, …)
+app/(nl)/nl/…         NL : /nl/…
+app/(en)/en/…         EN : /en/…
+components/ui/        folio-fold-menu.tsx (+ démo)
+components/site/      en-tête, pied de page, accueil, pages, formulaire, galerie
+content/fr.json       contenu repris du site actuel (28 pages)
+content/nl|en/*.json  traductions (même structure)
+lib/site.ts           navigation, textes d’interface, photos par page
+public/media|video    vraies photos et vidéos de chantier (optimisées)
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Photos
+Uniquement des photos et vidéos réelles de chantiers Gérard & Fils. Les quelques photos de banque d’images
+du site actuel sont remplacées automatiquement par de vraies photos (voir `replace` dans `lib/site.ts`).
+La vidéo d’accueil (`public/video/hero.mp4`) est un montage de vraies photos de chantier.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Formulaire de devis
+Netlify Forms (formulaire `devis`). Les demandes arrivent dans Netlify → Forms ; activer une notification
+e-mail vers info@demenagementgerardetfils.be.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Commandes
+```bash
+npm run dev     # développement
+npm run build   # export statique dans out/
+```
