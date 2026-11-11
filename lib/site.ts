@@ -220,6 +220,7 @@ type Dict = {
     send: string
     sending: string
     sent: string
+    deal: string
     sentText: string
     error: string
     privacy: string
@@ -314,6 +315,7 @@ export const dict: Record<Locale, Dict> = {
       send: "Envoyer ma demande",
       sending: "Envoi…",
       sent: "Merci, votre demande est envoyée.",
+      deal: "Marché conclu !",
       sentText: "Nous revenons vers vous très rapidement avec un devis détaillé.",
       error: "L’envoi a échoué. Appelez-nous au 0484 13 16 81 ou écrivez à info@demenagementgerardetfils.be.",
       privacy: "Vos données servent uniquement à établir votre devis.",
@@ -406,6 +408,7 @@ export const dict: Record<Locale, Dict> = {
       send: "Aanvraag versturen",
       sending: "Verzenden…",
       sent: "Bedankt, uw aanvraag is verstuurd.",
+      deal: "Afgesproken, deal!",
       sentText: "Wij nemen snel contact met u op met een gedetailleerde offerte.",
       error: "Verzenden is mislukt. Bel ons op 0484 13 16 81 of mail naar info@demenagementgerardetfils.be.",
       privacy: "Uw gegevens worden enkel gebruikt om uw offerte op te stellen.",
@@ -498,6 +501,7 @@ export const dict: Record<Locale, Dict> = {
       send: "Send my request",
       sending: "Sending…",
       sent: "Thank you, your request has been sent.",
+      deal: "It’s a deal!",
       sentText: "We will get back to you very soon with a detailed quote.",
       error: "Sending failed. Call us on 0484 13 16 81 or email info@demenagementgerardetfils.be.",
       privacy: "Your details are only used to prepare your quote.",

@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { AnimatePresence, motion } from "framer-motion"
-import { CheckCircle2, Loader2 } from "lucide-react"
+import { Loader2 } from "lucide-react"
 import type { Locale } from "@/lib/i18n"
 import { dict } from "@/lib/site"
 import { cn } from "@/lib/utils"
@@ -90,14 +90,33 @@ export function QuoteForm({ locale }: { locale: Locale }) {
       {state === "sent" ? (
         <motion.div
           key="ok"
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          className="rounded-[24px] bg-ink p-10 text-cream"
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="relative isolate overflow-hidden rounded-[26px] bg-red p-8 text-cream sm:p-12"
           role="status"
         >
-          <CheckCircle2 className="size-10 text-red-ink" strokeWidth={1.5} aria-hidden />
-          <p className="display mt-6 text-[32px]">{f.sent}</p>
-          <p className="mt-3 text-[17px] text-muted-ink">{f.sentText}</p>
+          <div aria-hidden className="absolute inset-0 -z-20 bg-[radial-gradient(120%_90%_at_0%_0%,#d9434b_0%,#c8323a_45%,#a8262d_100%)]" />
+          {/* The man from the logo seals the deal with a handshake. */}
+          <motion.div
+            aria-hidden
+            initial={{ x: 60, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+            className="absolute -bottom-6 -right-10 -z-10 aspect-[720/900] h-[115%] opacity-30 sm:right-0 sm:opacity-100"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/media/homme-main-body.png" alt="" className="absolute inset-0 size-full" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/media/homme-main-hand.png" alt="" className="gf-handshake absolute inset-0 size-full" />
+          </motion.div>
+          <div className="max-w-[24rem]">
+            <p className="display text-[clamp(40px,5vw,64px)] leading-[0.95]">
+              {f.deal.split(" ").slice(0, -1).join(" ")} <span className="font-serif font-normal">{f.deal.split(" ").slice(-1)}</span>
+            </p>
+            <p className="mt-5 text-[19px] font-semibold">{f.sent}</p>
+            <p className="mt-2 text-[17px] leading-relaxed text-cream/85">{f.sentText}</p>
+          </div>
         </motion.div>
       ) : (
         <motion.form

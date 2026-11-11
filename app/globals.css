@@ -172,14 +172,16 @@ a {
   position: relative;
   padding-left: 1.4em;
 }
+/* List bullets are the red tie from the logo. */
 .prose-gf li::before {
   content: "";
   position: absolute;
-  left: 0;
-  top: 0.68em;
-  width: 0.7em;
-  height: 1.5px;
+  left: 0.1em;
+  top: 0.32em;
+  width: 0.5em;
+  height: 0.95em;
   background: var(--red);
+  clip-path: polygon(30% 0, 70% 0, 62% 16%, 82% 78%, 50% 100%, 18% 78%, 38% 16%);
 }
 
 /* Photo treatment: real photos, gently graded so they sit together. */

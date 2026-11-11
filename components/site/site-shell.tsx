@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { MessageCircle, Phone } from "lucide-react"
 import FolioFoldMenu, { type FoldLink } from "@/components/ui/folio-fold-menu"
+import { ScrollTruck } from "./scroll-truck"
 import { href, locales, parsePath, type Locale } from "@/lib/i18n"
 import { company, dict, menuLabels } from "@/lib/site"
 import { cn } from "@/lib/utils"
@@ -129,13 +130,15 @@ export function SiteShell({ locale, children }: { locale: Locale; children: Reac
           {children}
         </div>
 
+        <ScrollTruck locale={locale} pathname={pathname} />
+
         {/* WhatsApp, always one tap away (desktop) */}
         <a
           href={company.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="WhatsApp"
-          className="group absolute bottom-6 right-6 z-[4] hidden h-14 items-center gap-0 overflow-hidden rounded-full bg-[#1f8f4e] pl-4 pr-4 text-cream shadow-[0_14px_34px_-14px_rgb(0_0_0/0.7)] transition-[gap,padding] duration-500 ease-[var(--ease-out)] hover:gap-2.5 hover:pr-5 sm:inline-flex"
+          className="group absolute bottom-14 right-6 z-[4] hidden h-14 items-center gap-0 overflow-hidden rounded-full bg-[#1f8f4e] pl-4 pr-4 text-cream shadow-[0_14px_34px_-14px_rgb(0_0_0/0.7)] transition-[gap,padding] duration-500 ease-[var(--ease-out)] hover:gap-2.5 hover:pr-5 sm:inline-flex"
         >
           <MessageCircle className="size-6 shrink-0" strokeWidth={1.75} aria-hidden />
           <span className="max-w-0 overflow-hidden whitespace-nowrap text-[15px] font-semibold transition-[max-width] duration-500 ease-[var(--ease-out)] group-hover:max-w-[160px]">
