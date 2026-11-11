@@ -371,13 +371,16 @@ export function CtaBand({ locale, title, text }: { locale: Locale; title?: strin
   return (
     <section className="relative isolate overflow-hidden bg-red text-cream">
       {/* The man from the logo, holding out his hand to the visitor. */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/media/homme-main.png"
-        alt=""
-        loading="lazy"
-        className="pointer-events-none absolute -bottom-4 right-[-18%] -z-10 h-[70%] w-auto opacity-20 md:right-[-4%] md:h-[80%] md:opacity-35 lg:right-[3%] lg:h-[96%] lg:opacity-100"
-      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-4 right-[-18%] -z-10 aspect-[720/900] h-[70%] opacity-20 md:right-[-4%] md:h-[80%] md:opacity-35 lg:right-[3%] lg:h-[96%] lg:opacity-100"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/media/homme-main-body.png" alt="" loading="lazy" className="absolute inset-0 size-full" />
+        {/* The hand is a separate layer that pumps up and down from the wrist, like a handshake. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/media/homme-main-hand.png" alt="" loading="lazy" className="gf-handshake absolute inset-0 size-full" />
+      </div>
       <div aria-hidden className="absolute inset-0 -z-20 bg-[radial-gradient(120%_90%_at_0%_0%,#d9434b_0%,#c8323a_45%,#a8262d_100%)]" />
       <Container className="py-24 sm:py-32">
         <div className="max-w-[640px] lg:max-w-[560px] xl:max-w-[620px]">

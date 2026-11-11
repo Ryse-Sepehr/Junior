@@ -250,3 +250,20 @@ video.photo {
   background: var(--red);
   border: 3px solid var(--cream);
 }
+
+/* Handshake: the hand from the logo pumps from the wrist, then rests a beat. */
+@keyframes gf-handshake {
+  0% { transform: rotate(-4deg) translateY(-6px); }
+  22% { transform: rotate(5deg) translateY(8px); }
+  44% { transform: rotate(-4deg) translateY(-6px); }
+  66% { transform: rotate(5deg) translateY(8px); }
+  88%, 100% { transform: rotate(-4deg) translateY(-6px); }
+}
+.gf-handshake {
+  transform-origin: 10% 73%;
+  animation: gf-handshake 2.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gf-handshake { animation: none; }
+}
