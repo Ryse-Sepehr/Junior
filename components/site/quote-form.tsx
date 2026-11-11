@@ -69,6 +69,11 @@ export function QuoteForm({ locale }: { locale: Locale }) {
   const f = dict[locale].form
   const [state, setState] = React.useState<"idle" | "sending" | "sent" | "error">("idle")
 
+  // Preview of the thank-you screen without sending anything: add ?apercu=merci to the URL.
+  React.useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("apercu") === "merci") setState("sent")
+  }, [])
+
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setState("sending")
