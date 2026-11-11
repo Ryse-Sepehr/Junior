@@ -96,16 +96,9 @@ export function SiteShell({ locale, children }: { locale: Locale; children: Reac
             </Link>
           ))}
         </nav>
-        <a
-          href={company.mobileHref}
-          className="hidden h-11 items-center gap-2 rounded-full px-3 text-[14px] font-medium text-cream/90 transition-colors hover:text-cream md:inline-flex"
-        >
-          <Phone className="size-4" strokeWidth={1.75} aria-hidden />
-          {company.mobile}
-        </a>
         <Link
           href={href(locale, "devis-demenagement")}
-          className="hidden h-11 items-center rounded-full bg-red px-5 text-[14px] font-semibold text-cream transition-[background-color,transform] duration-300 hover:bg-[#b02a31] active:scale-[0.97] sm:inline-flex"
+          className="hidden h-11 items-center rounded-full bg-red px-5 text-[14px] font-semibold text-cream transition-[background-color,transform] duration-300 hover:bg-[#b02a31] active:scale-[0.97] lg:inline-flex"
         >
           {t.quote}
         </Link>

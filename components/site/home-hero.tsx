@@ -4,6 +4,7 @@ import * as React from "react"
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
 import { ArrowDown } from "lucide-react"
 import { Btn, Container } from "./primitives"
+import { Accent } from "./accent"
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -84,7 +85,7 @@ export function HomeHero({ title, sub, quote, quoteHref, phone, phoneHref, capti
                 animate={{ y: "0%" }}
                 transition={{ duration: 1.05, ease, delay: d + i * 0.12 }}
               >
-                {line}
+                {i === 1 ? <Accent text={line} /> : line}
               </motion.span>
             </span>
           ))}

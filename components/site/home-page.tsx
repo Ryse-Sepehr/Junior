@@ -6,6 +6,7 @@ import { communeNames, communes, company, dict, media, pages, videos } from "@/l
 import { HomeHero } from "./home-hero"
 import { Faq, PhotoReveal, Reveal, SiteVideo } from "./motion"
 import { Btn, Container, tidy } from "./primitives"
+import { Accent } from "./accent"
 import { ServiceIndex } from "./service-index"
 import { ProcessStory } from "./process-story"
 import { CtaBand } from "./blocks"
@@ -81,7 +82,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         <Container className="grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-7">
             <Reveal>
-              <h2 className="display text-[clamp(38px,5.4vw,76px)] text-ink">{tidy(intro.h)}</h2>
+              <h2 className="display text-[clamp(38px,5.4vw,76px)] text-ink"><Accent text={tidy(intro.h)} /></h2>
             </Reveal>
             <Reveal className="prose-gf mt-10 max-w-[62ch] text-[18px] leading-[1.7] text-ink/80">
               {ps(intro.body).map((p, i) => (
@@ -114,7 +115,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         <Container>
           <div className="grid gap-8 border-t border-ink/15 pt-16 lg:grid-cols-12">
             <Reveal className="lg:col-span-5">
-              <h2 className="display text-[clamp(34px,4.4vw,60px)] text-ink">{tidy(S[2].h)}</h2>
+              <h2 className="display text-[clamp(34px,4.4vw,60px)] text-ink"><Accent text={tidy(S[2].h)} /></h2>
             </Reveal>
             <Reveal className="lg:col-span-6 lg:col-start-7">
               <p className="max-w-[60ch] text-[18px] leading-[1.7] text-ink/75">{ps(S[2].body)[0]}</p>
@@ -138,14 +139,14 @@ export function HomePage({ locale }: { locale: Locale }) {
       </section>
 
       {/* Complementary services */}
-      <section className="bg-ink py-24 text-cream sm:py-32">
+      <section className="bg-paper-2 py-24 text-ink sm:py-32">
         <Container>
           <div className="grid gap-8 lg:grid-cols-12">
             <Reveal className="lg:col-span-6">
-              <h2 className="display text-[clamp(34px,4.4vw,60px)]">{tidy(S[8].h)}</h2>
+              <h2 className="display text-[clamp(34px,4.4vw,60px)]"><Accent text={tidy(S[8].h)} /></h2>
             </Reveal>
             <Reveal className="lg:col-span-5 lg:col-start-8">
-              <p className="text-[17px] leading-[1.7] text-muted-ink">{ps(S[8].body)[0]}</p>
+              <p className="text-[17px] leading-[1.7] text-ink/75">{ps(S[8].body)[0]}</p>
             </Reveal>
           </div>
           <div className="mt-16 grid gap-5 md:grid-cols-2 lg:h-[680px] lg:grid-cols-[1.25fr_1fr] lg:grid-rows-2">
@@ -186,7 +187,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         <Container className="grid items-center gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Reveal>
-              <h2 className="display text-[clamp(34px,4.2vw,58px)]">{t.videosTitle}</h2>
+              <h2 className="display text-[clamp(34px,4.2vw,58px)]"><Accent text={t.videosTitle} /></h2>
               <p className="mt-6 max-w-[40ch] text-[17px] leading-[1.7] text-muted-ink">{t.videosText}</p>
               <div className="mt-8">
                 <Btn href={href(locale, "photos")} variant="line-cream" arrow>
@@ -217,7 +218,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           <div className="grid gap-14 lg:grid-cols-12">
             <div className="lg:col-span-6">
               <Reveal>
-                <h2 className="display text-[clamp(34px,4.4vw,60px)] text-ink">{tidy(atouts.h)}</h2>
+                <h2 className="display text-[clamp(34px,4.4vw,60px)] text-ink"><Accent text={tidy(atouts.h)} /></h2>
               </Reveal>
               <Reveal className="prose-gf mt-8 max-w-[60ch] text-[17px] leading-[1.7] text-ink/80">
                 <p>{ps(atouts.body)[0]}</p>
@@ -254,7 +255,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         <Container className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Reveal>
-              <h2 className="display text-[clamp(34px,4.4vw,60px)] text-ink">{tidy(capital.h)}</h2>
+              <h2 className="display text-[clamp(34px,4.4vw,60px)] text-ink"><Accent text={tidy(capital.h)} /></h2>
               <p className="mt-6 max-w-[48ch] text-[17px] leading-[1.7] text-ink/75">{t.communesText}</p>
             </Reveal>
           </div>
@@ -285,7 +286,7 @@ export function HomePage({ locale }: { locale: Locale }) {
       <section className="bg-paper py-24 sm:py-32">
         <Container className="grid gap-12 lg:grid-cols-12">
           <Reveal className="lg:col-span-4">
-            <h2 className="display text-[clamp(34px,4.4vw,60px)] text-ink">{t.faqTitle}</h2>
+            <h2 className="display text-[clamp(34px,4.4vw,60px)] text-ink"><Accent text={t.faqTitle} /></h2>
           </Reveal>
           <div className="lg:col-span-8">
             <Faq items={page.faq} />

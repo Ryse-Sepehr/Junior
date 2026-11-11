@@ -183,8 +183,9 @@ a {
 }
 
 /* Photo treatment: real photos, gently graded so they sit together. */
-.photo {
-  filter: saturate(0.92) contrast(1.03);
+/* Photos are colour-graded at build time (warm, softer skies); videos get the same look live. */
+video.photo {
+  filter: saturate(0.85) sepia(0.08) contrast(1.04);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -7,6 +7,7 @@ import { CtaBand, ContentSections, PageHero } from "./blocks"
 import { Gallery } from "./gallery"
 import { Faq, Reveal } from "./motion"
 import { Container, tidy } from "./primitives"
+import { Accent } from "./accent"
 import { QuoteForm } from "./quote-form"
 import { VolumeCalculator } from "./volume-calculator"
 import { LiftReach } from "./lift-reach"
@@ -161,7 +162,7 @@ export function RoutePage({ locale, slug }: { locale: Locale; slug: string }) {
         </article>
         <section className="bg-paper-2 py-20 sm:py-24">
           <Container>
-            <h2 className="display text-[clamp(28px,3vw,40px)] text-ink">{t.related}</h2>
+            <h2 className="display text-[clamp(28px,3vw,40px)] text-ink"><Accent text={t.related} /></h2>
             <ul className="mt-10 grid gap-8 md:grid-cols-3">
               {others.map((p) => {
                 const post = getPage(locale, p)
@@ -200,11 +201,11 @@ export function RoutePage({ locale, slug }: { locale: Locale; slug: string }) {
         </Container>
       )}
       {slug === "location-de-lift" && <LiftReach locale={locale} />}
-      <ContentSections locale={locale} sections={slug === "location-de-lift" ? page.sections.filter((s) => s.level !== 1) : page.sections} fallbackImages={pool} />
+      <ContentSections locale={locale} sections={slug === "location-de-lift" ? page.sections.filter((s) => s.level !== 1) : page.sections} fallbackImages={pool} hero={meta.hero} />
       {faqFromSections.length > 0 && (
         <section className="bg-paper py-20 sm:py-28">
           <Container className="grid gap-12 lg:grid-cols-12">
-            <h2 className="display text-[clamp(30px,3.6vw,48px)] text-ink lg:col-span-4">{t.faqTitle}</h2>
+            <h2 className="display text-[clamp(30px,3.6vw,48px)] text-ink lg:col-span-4"><Accent text={t.faqTitle} /></h2>
             <div className="lg:col-span-8">
               <Faq items={faqFromSections} />
             </div>

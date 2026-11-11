@@ -4,8 +4,9 @@ import type { Body, Section } from "@/lib/content"
 import { href, type Locale } from "@/lib/i18n"
 import { company, dict, media } from "@/lib/site"
 import { cn } from "@/lib/utils"
-import { PhotoReveal, Reveal } from "./motion"
+import { Faq, PhotoReveal, Reveal } from "./motion"
 import { Btn, Container, tidy } from "./primitives"
+import { Accent } from "./accent"
 
 export function PageHero({
   locale,
@@ -54,11 +55,14 @@ export function PageHero({
           </nav>
         )}
         <Reveal>
-          <h1 className={cn("display", title.length > 70 ? "max-w-[26ch] text-[clamp(32px,4.2vw,60px)]" : "max-w-[20ch] text-[clamp(38px,6vw,84px)]")}>{title}</h1>
+          <h1 className={cn("display", title.length > 70 ? "max-w-[26ch] text-[clamp(32px,4.2vw,60px)]" : "max-w-[20ch] text-[clamp(38px,6vw,84px)]")}>
+            <Accent text={title} />
+          </h1>
         </Reveal>
         <div className="mt-8 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           {lead ? <p className="max-w-[58ch] text-[clamp(16px,1.4vw,19px)] leading-relaxed text-cream/85">{lead}</p> : <span />}
-          <div className="flex flex-wrap gap-3">
+          {/* On phones the sticky bottom bar already carries these two actions. */}
+          <div className="hidden flex-wrap gap-3 sm:flex">
             <Btn href={href(locale, "devis-demenagement")} variant="red" arrow>
               {t.quote}
             </Btn>
@@ -73,9 +77,16 @@ export function PageHero({
   )
 }
 
-function BodyBlocks({ body, tone = "paper" }: { body: Body[]; tone?: "paper" | "ink" }) {
+/** First sentence of a paragraph (for lead-ins and pull quotes). */
+function splitLead(p: string): [string, string] {
+  const m = p.match(/^([\s\S]{40,230}?[.!?])\s+([\s\S]*)$/)
+  return m ? [m[1], m[2]] : [p, ""]
+}
+
+function BodyBlocks({ body, tone = "paper", skipLead = false, columns = false }: { body: Body[]; tone?: "paper" | "ink"; skipLead?: boolean; columns?: boolean }) {
+  let firstP = true
   return (
-    <div className={cn("prose-gf text-[17.5px] leading-[1.75]", tone === "ink" ? "text-cream/80" : "text-ink/80")}>
+    <div className={cn("prose-gf text-[17.5px] leading-[1.75]", tone === "ink" ? "text-cream/80" : "text-ink/80", columns && "md:columns-2 md:gap-12 [&>p]:break-inside-avoid")}>
       {body.map((b, i) => {
         if ("ul" in b)
           return (
@@ -86,23 +97,89 @@ function BodyBlocks({ body, tone = "paper" }: { body: Body[]; tone?: "paper" | "
             </ul>
           )
         if ("box" in b) return null
+        if (firstP) {
+          firstP = false
+          const [lead, rest] = splitLead(b.p)
+          // The first sentence is either lifted into a pull quote, or set in bold so the page can be skimmed.
+          if (skipLead) return rest ? <p key={i}>{rest}</p> : null
+          return (
+            <p key={i}>
+              <strong className={cn("font-semibold", tone === "ink" ? "text-cream" : "text-ink")}>{lead}</strong>
+              {rest && " " + rest}
+            </p>
+          )
+        }
         return <p key={i}>{b.p}</p>
       })}
     </div>
   )
 }
 
+/** Wide job-site photos used as full-bleed breaks between long text sections. */
+const bleedPool = [
+  "camion-lift-quartier-residentiel-allongee",
+  "lift-demontable-allongee",
+  "piano-emballage-lift-exterieur-allongee",
+  "service-lift-deuxieme-etage-allongee",
+  "demenagement-gerard-rue-bruxelles",
+  "garde-meubles-container-allongee",
+]
+
+function PhotoBreak({ image, caption }: { image: string; caption: string }) {
+  return (
+    <figure className="relative h-[52svh] min-h-[320px] overflow-hidden bg-ink-3">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={`/media/${image}.webp`} alt="" loading="lazy" className="photo absolute inset-0 size-full object-cover" />
+      <figcaption className="absolute bottom-4 right-5 rounded-full bg-ink/60 px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] text-cream/85 backdrop-blur-sm">
+        {caption}
+      </figcaption>
+    </figure>
+  )
+}
+
 /** Renders the original page structure (headings, text, lists, photos) in the new design. */
-export function ContentSections({ locale, sections, fallbackImages }: { locale: Locale; sections: Section[]; fallbackImages: string[] }) {
+export function ContentSections({
+  locale,
+  sections,
+  fallbackImages,
+  hero,
+}: {
+  locale: Locale
+  sections: Section[]
+  fallbackImages: string[]
+  hero?: string
+}) {
   const t = dict[locale]
   let imgSide = 0
   let fb = 0
+  let plain = 0
+  let rendered = 0
+  let breaks = 0
+  const bleeds = bleedPool.filter((b) => b !== hero)
   // Use the photos once each; give image-less long sections a real photo from the pool.
   const used = new Set<string>()
 
   return (
     <div className="bg-paper">
       {sections.map((s, i) => {
+        const node = renderSection(s, i)
+        if (!node) return null
+        rendered++
+        // Every few sections, let a wide job-site photo breathe across the page.
+        const brk = rendered % 3 === 0 && i < sections.length - 2 && breaks < 2 && bleeds[breaks]
+        if (!brk) return node
+        const img = bleeds[breaks++]
+        return (
+          <div key={`b-${i}`}>
+            {node}
+            <PhotoBreak image={img} caption={t.realPhotos} />
+          </div>
+        )
+      })}
+    </div>
+  )
+
+  function renderSection(s: Section, i: number) {
         const key = `${i}-${s.h}`
         const next = sections[i + 1]
         // A heading with no text of its own introduces the steps/commitments that follow.
@@ -157,7 +234,10 @@ export function ContentSections({ locale, sections, fallbackImages }: { locale: 
 
         const imgs = (s.imgs ?? []).map(media).filter((m) => !used.has(m))
         const longText = s.body.reduce((n, b) => n + ("p" in b ? b.p.length : 0) + ("ul" in b ? b.ul.join("").length : 0), 0)
-        if (!imgs.length && s.level === 2 && longText > 600 && fb < fallbackImages.length) {
+        const ownImgs = imgs.length > 0
+        const quoteParas = s.body.filter((b) => "p" in b && !("box" in b)).length
+        const isStatement = !ownImgs && s.level === 2 && quoteParas >= 2 && plain % 2 === 0 && !s.body.some((b) => "p" in b && /^>/.test(b.p))
+        if (!imgs.length && !isStatement && s.level === 2 && longText > 600 && fb < fallbackImages.length) {
           const f = fallbackImages[fb++]
           if (!used.has(f)) imgs.push(f)
         }
@@ -172,7 +252,7 @@ export function ContentSections({ locale, sections, fallbackImages }: { locale: 
                 <div className={cn("lg:col-span-6", flip && "lg:order-2 lg:col-start-7")}>
                   {s.h && (
                     <Reveal>
-                      <h2 className={cn("display text-ink", sub ? "text-[clamp(28px,3vw,40px)]" : "text-[clamp(32px,4vw,54px)]")}>{tidy(s.h)}</h2>
+                      <h2 className={cn("display text-ink", sub ? "text-[clamp(28px,3vw,40px)]" : "text-[clamp(32px,4vw,54px)]")}><Accent text={tidy(s.h)} /></h2>
                     </Reveal>
                   )}
                   <Reveal className="mt-7 max-w-[62ch]">
@@ -201,13 +281,72 @@ export function ContentSections({ locale, sections, fallbackImages }: { locale: 
           )
         }
 
+        const ps = s.body.filter((b): b is { p: string } => "p" in b && !("box" in b)).map((b) => b.p)
+        if (ps.filter((p) => /^>\s*/.test(p)).length >= 2) {
+          const items: { q: string; a: string }[] = []
+          for (const p of ps) {
+            if (/^>\s*/.test(p)) items.push({ q: p.replace(/^>\s*/, ""), a: "" })
+            else if (items.length) items[items.length - 1].a += (items[items.length - 1].a ? " " : "") + p
+          }
+          return (
+            <section key={key} className="py-16 sm:py-24">
+              <Container className="grid gap-12 lg:grid-cols-12">
+                <Reveal className="lg:col-span-4">
+                  <h2 className="display text-[clamp(30px,3.6vw,48px)] text-ink">
+                    <Accent text={tidy(s.h) || t.faqTitle} />
+                  </h2>
+                </Reveal>
+                <div className="lg:col-span-8">
+                  <Faq items={items} />
+                </div>
+              </Container>
+            </section>
+          )
+        }
+        const paras = ps.length
+        const statement = isStatement || (!sub && paras >= 2 && plain % 2 === 0)
+        if (!sub && paras >= 2) plain++
+        if (statement) {
+          const firstPara = (s.body.find((b) => "p" in b && !("box" in b)) as { p: string }).p
+          return (
+            <section key={key} className="py-20 sm:py-28">
+              <Container>
+                {s.h && (
+                  <Reveal>
+                    <h2 className="display text-[clamp(30px,3.6vw,48px)] text-ink">
+                      <Accent text={tidy(s.h)} />
+                    </h2>
+                  </Reveal>
+                )}
+                <Reveal>
+                  <p className="mt-10 max-w-[30ch] font-serif text-[clamp(30px,3.8vw,54px)] leading-[1.12] tracking-[-0.01em] text-ink">
+                    <span className="text-red">“</span>
+                    {splitLead(firstPara)[0]}
+                    <span className="text-red">”</span>
+                  </p>
+                </Reveal>
+                <Reveal className="mt-12 border-t border-ink/15 pt-10">
+                  <BodyBlocks body={s.body} skipLead columns />
+                  {s.cta && (
+                    <div className="mt-8">
+                      <Btn href={href(locale, s.cta.slug)} variant="ink" arrow>
+                        {s.cta.label}
+                      </Btn>
+                    </div>
+                  )}
+                </Reveal>
+              </Container>
+            </section>
+          )
+        }
+
         return (
           <section key={key} className={cn(sub ? "py-10 sm:py-12" : "py-16 sm:py-20")}>
             <Container className="grid gap-8 lg:grid-cols-12">
               <div className="lg:col-span-4">
                 {s.h && (
                   <Reveal>
-                    <h2 className={cn("display text-ink", sub ? "text-[clamp(24px,2.4vw,32px)]" : "text-[clamp(30px,3.6vw,48px)]")}>{tidy(s.h)}</h2>
+                    <h2 className={cn("display text-ink", sub ? "text-[clamp(24px,2.4vw,32px)]" : "text-[clamp(30px,3.6vw,48px)]")}><Accent text={tidy(s.h)} /></h2>
                   </Reveal>
                 )}
               </div>
@@ -224,33 +363,39 @@ export function ContentSections({ locale, sections, fallbackImages }: { locale: 
             </Container>
           </section>
         )
-      })}
-    </div>
-  )
+  }
 }
 
-export function CtaBand({ locale, title, text, image }: { locale: Locale; title?: string; text?: string; image?: string }) {
+export function CtaBand({ locale, title, text }: { locale: Locale; title?: string; text?: string; image?: string }) {
   const t = dict[locale]
   return (
-    <section className="relative isolate overflow-hidden bg-ink text-cream">
+    <section className="relative isolate overflow-hidden bg-red text-cream">
+      {/* The man from the logo, holding out his hand to the visitor. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={`/media/${image ?? "camion-lift-dernier-etage"}.webp`} alt="" loading="lazy" className="photo absolute inset-0 -z-10 size-full object-cover opacity-35" />
-      <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
-      <Container className="grid gap-10 py-24 sm:py-32 lg:grid-cols-12 lg:items-end">
-        <div className="lg:col-span-7">
+      <img
+        src="/media/homme-main.png"
+        alt=""
+        loading="lazy"
+        className="pointer-events-none absolute -bottom-4 right-[-18%] -z-10 h-[70%] w-auto opacity-20 md:right-[-4%] md:h-[80%] md:opacity-35 lg:right-[3%] lg:h-[96%] lg:opacity-100"
+      />
+      <div aria-hidden className="absolute inset-0 -z-20 bg-[radial-gradient(120%_90%_at_0%_0%,#d9434b_0%,#c8323a_45%,#a8262d_100%)]" />
+      <Container className="py-24 sm:py-32">
+        <div className="max-w-[640px] lg:max-w-[560px] xl:max-w-[620px]">
           <Reveal>
-            <h2 className="display text-[clamp(36px,5vw,72px)]">{title ?? t.ctaTitle}</h2>
-            <p className="mt-6 max-w-[54ch] text-[18px] leading-[1.7] text-cream/80">{text ?? t.ctaText}</p>
+            <h2 className="display text-[clamp(38px,5.4vw,78px)]">
+              <Accent text={title ?? t.ctaTitle} />
+            </h2>
+            <p className="mt-6 max-w-[48ch] text-[18px] leading-[1.7] text-cream/90">{text ?? t.ctaText}</p>
+          </Reveal>
+          <Reveal className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <Btn href={href(locale, "devis-demenagement")} variant="cream" arrow>
+              {t.quoteLong}
+            </Btn>
+            <Btn href={company.phoneHref} variant="line-cream">
+              {company.phone}
+            </Btn>
           </Reveal>
         </div>
-        <Reveal className="flex flex-col gap-3 sm:flex-row lg:col-span-5 lg:justify-end">
-          <Btn href={href(locale, "devis-demenagement")} variant="red" arrow>
-            {t.quoteLong}
-          </Btn>
-          <Btn href={company.phoneHref} variant="line-cream">
-            {company.phone}
-          </Btn>
-        </Reveal>
       </Container>
     </section>
   )
