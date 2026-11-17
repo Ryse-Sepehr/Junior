@@ -5,6 +5,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { ArrowDown } from "lucide-react"
 import { Btn, Container } from "./primitives"
 import { Accent } from "./accent"
+import { Logo } from "./logo"
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -137,14 +138,13 @@ export function HomeHero({ title, sub, quote, quoteHref, phone, phoneHref, capti
           animate={play ? { clipPath: "inset(0% 0% 100% 0%)" } : undefined}
           transition={{ duration: 1.0, ease: [0.76, 0, 0.24, 1], delay: 0.75 }}
         >
-          <motion.img
-            src="/media/logo-dark.png"
-            alt=""
-            className="w-[min(320px,62vw)]"
+          <motion.div
             initial={{ opacity: 0, y: 12, scale: 0.98 }}
             animate={play ? { opacity: [0, 1, 1, 0], y: [12, 0, 0, -24], scale: [0.98, 1, 1, 1] } : { opacity: 0 }}
             transition={{ duration: 1.5, times: [0, 0.3, 0.6, 1], ease }}
-          />
+          >
+            <Logo size={128} className="max-sm:scale-[0.72]" />
+          </motion.div>
         </motion.div>
       )}
     </section>

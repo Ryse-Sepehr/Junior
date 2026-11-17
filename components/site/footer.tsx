@@ -3,6 +3,7 @@ import { Mail, MapPin, MessageCircle, Phone } from "lucide-react"
 import { href, type Locale } from "@/lib/i18n"
 import { communeNames, communes, company, dict, moveServices, otherServices } from "@/lib/site"
 import { Container } from "./primitives"
+import { Logo } from "./logo"
 
 export function Footer({ locale }: { locale: Locale }) {
   const t = dict[locale]
@@ -12,9 +13,8 @@ export function Footer({ locale }: { locale: Locale }) {
       <Container>
         <div className="grid gap-12 border-b border-cream/12 pb-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Link href={href(locale)} className="inline-flex rounded-xl bg-cream px-3 py-2">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/media/logo-dark.png" alt={company.name} className="h-14 w-auto" loading="lazy" />
+            <Link href={href(locale)} aria-label={company.name} className="inline-flex">
+              <Logo size={84} tone="light" />
             </Link>
             <p className="mt-6 max-w-[42ch] text-[15px] leading-relaxed text-muted-ink">{t.footerAbout}</p>
             <div className="mt-8 flex items-start gap-4">

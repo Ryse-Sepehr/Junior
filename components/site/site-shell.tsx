@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { MessageCircle, Phone } from "lucide-react"
 import FolioFoldMenu, { type FoldLink } from "@/components/ui/folio-fold-menu"
 import { ScrollTruck } from "./scroll-truck"
+import { Logo } from "./logo"
 import { href, locales, parsePath, type Locale } from "@/lib/i18n"
 import { company, dict, menuLabels } from "@/lib/site"
 import { cn } from "@/lib/utils"
@@ -73,10 +74,10 @@ export function SiteShell({ locale, children }: { locale: Locale; children: Reac
       <Link
         href={href(locale)}
         aria-label={`${company.name} — ${t.home}`}
-        className="flex h-12 items-center rounded-[12px] bg-cream px-3 sm:h-14 shadow-[0_6px_20px_-10px_rgb(0_0_0/0.55)] transition-transform duration-300 ease-[var(--ease-out)] hover:-translate-y-px"
+        className="flex h-12 items-center rounded-[14px] bg-cream py-1 pl-1 pr-2.5 sm:h-14 sm:pl-1.5 sm:pr-4 shadow-[0_6px_20px_-10px_rgb(0_0_0/0.55)] transition-transform duration-300 ease-[var(--ease-out)] hover:-translate-y-px"
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/media/logo-dark.png" alt={company.name} width={546} height={346} className="h-10 w-auto sm:h-12" />
+        <Logo size={38} tagline={false} className="sm:hidden" />
+        <Logo size={46} row className="hidden sm:inline-flex" />
       </Link>
 
       <div className={cn("flex items-center gap-2 transition-opacity duration-300", open && "pointer-events-none opacity-0")}>

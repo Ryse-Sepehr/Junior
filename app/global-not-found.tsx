@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { body, display } from "@/lib/fonts"
+import { Logo } from "@/components/site/logo"
+import { body, display, logoAmp, logoSans } from "@/lib/fonts"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ const lines = [
 
 export default function GlobalNotFound() {
   return (
-    <html lang="fr" className={`${display.variable} ${body.variable}`}>
+    <html lang="fr" className={`${display.variable} ${body.variable} ${logoSans.variable} ${logoAmp.variable}`}>
       <body style={{ overflow: "auto" }}>
         <main className="relative isolate flex min-h-svh flex-col overflow-hidden bg-red text-cream">
           <div aria-hidden className="absolute inset-0 -z-20 bg-[radial-gradient(120%_90%_at_0%_0%,#d9434b_0%,#c8323a_45%,#a8262d_100%)]" />
@@ -28,9 +29,8 @@ export default function GlobalNotFound() {
           </div>
 
           <header className="px-5 pt-5 sm:px-10 sm:pt-8">
-            <Link href="/" className="inline-flex rounded-[12px] bg-cream px-3 py-2">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/media/logo-dark.png" alt="Déménagement Gérard & Fils" className="h-11 w-auto" />
+            <Link href="/" aria-label="Déménagement Gérard & Fils" className="inline-flex rounded-[14px] bg-cream py-1.5 pl-1.5 pr-4">
+              <Logo size={46} row />
             </Link>
           </header>
 

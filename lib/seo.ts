@@ -9,7 +9,7 @@ export function siteMetadata(locale: Locale): Metadata {
   return {
     metadataBase: new URL(siteUrl),
     applicationName: company.name,
-    icons: { icon: "/media/Logo_GerardFils9.png", apple: "/media/Logo_GerardFils9.png" },
+    icons: { icon: [{ url: "/media/badge.svg", type: "image/svg+xml" }, { url: "/media/badge-192.png", sizes: "192x192" }], apple: "/media/badge-180.png" },
     openGraph: { siteName: company.name, locale: { fr: "fr_BE", nl: "nl_BE", en: "en_GB" }[locale], type: "website" },
   }
 }

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logo Gérard & Fils — pistes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#141210; --paper:#f3ede3; --cream:#f6f1e8; --red:#c8323a; --muted:#6b645b; }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--paper); color: var(--ink); font-family: Figtree, sans-serif; padding: 56px 48px 72px; }
+  header { max-width: 1200px; margin: 0 auto 40px; display: flex; justify-content: space-between; align-items: end; gap: 24px; }
+  h1 { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 44px; letter-spacing: -0.03em; line-height: 1; }
+  header p { color: var(--muted); max-width: 46ch; font-size: 15px; line-height: 1.5; }
+  .grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .card { background: #fff; border-radius: 22px; overflow: hidden; box-shadow: 0 1px 0 rgb(0 0 0/.06); }
+  .stage { display: grid; grid-template-columns: 1.45fr 1fr; min-height: 300px; }
+  .light { background: var(--cream); display: grid; place-items: center; padding: 28px; }
+  .dark { background: var(--ink); display: grid; place-items: center; padding: 28px; position: relative; }
+  .dark .icons { position: absolute; left: 16px; bottom: 14px; display: flex; gap: 10px; align-items: end; }
+  .meta { padding: 18px 22px 22px; display: flex; gap: 16px; align-items: baseline; border-top: 1px solid rgb(0 0 0/.07); }
+  .meta b { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 26px; color: var(--red); }
+  .meta h2 { font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 19px; }
+  .meta p { color: var(--muted); font-size: 14px; line-height: 1.45; margin-top: 3px; }
+  .orig { max-width: 1200px; margin: 0 auto 24px; display: flex; gap: 18px; align-items: center; background:#fff; border-radius: 22px; padding: 14px 22px; }
+  .orig img { height: 64px; }
+  .orig span { font-size: 14px; color: var(--muted); }
+  /* wordmark */
+  .wm { font-family: "Bricolage Grotesque"; line-height: .9; }
+  .wm small { display: block; font-family: Figtree; font-weight: 600; font-size: 13px; letter-spacing: .22em; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+  .wm strong { display: block; font-weight: 800; font-size: 46px; letter-spacing: -0.035em; }
+  .wm em { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; color: var(--red); font-size: 1.08em; letter-spacing: 0; }
+  .lockup { display: flex; align-items: center; gap: 18px; }
+  .on-dark { color: var(--cream); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- A: clean flat silhouette -->
+    <symbol id="figA" viewBox="0 0 240 260">
+      <path d="M8 260 L16 146 Q20 100 58 84 L104 54 L136 54 L182 84 Q220 100 224 146 L232 260 Z" fill="currentColor"/>
+      <path d="M104 54 L136 54 L120 158 Z" fill="var(--bg)"/>
+      <path d="M104 52 L91 112 L119 172" fill="none" stroke="var(--bg)" stroke-width="3.2" stroke-linejoin="round"/>
+      <path d="M136 52 L149 112 L121 172" fill="none" stroke="var(--bg)" stroke-width="3.2" stroke-linejoin="round"/>
+      <path d="M113 57 L127 57 L124.5 69 L115.5 69 Z" fill="var(--red)"/>
+      <path d="M115.5 71 L124.5 71 L131 142 L120 158 L109 142 Z" fill="var(--red)"/>
+      <!-- cuff + hand -->
+      <path d="M22 158 L44 146 L52 180 L30 190 Z" fill="var(--bg)"/>
+      <path d="M48 150 C56 146 66 144 74 146 L76 118 C77 104 92 102 92 116 L91 146 C104 150 116 158 124 168 C130 176 124 186 114 184 L60 182 C52 182 48 176 48 170 Z" fill="var(--bg)"/>
+      <path d="M80 158 L119 167 M77 167 L117 176 M74 176 L106 182" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+    </symbol>
+    <!-- B: collar + tie mark -->
+    <symbol id="markB" viewBox="0 0 100 100">
+      <rect width="100" height="100" rx="24" fill="var(--box)"/>
+      <path d="M29 16 L71 16 L50 80 Z" fill="var(--shirt)"/>
+      <path d="M29 16 L45 34 M71 16 L55 34" stroke="var(--box)" stroke-width="3.2" stroke-linecap="round"/>
+      <path d="M45.6 24 L54.4 24 L52.8 32 L47.2 32 Z" fill="var(--tie)"/>
+      <path d="M47.2 33.6 L52.8 33.6 L56.4 66 L50 74 L43.6 66 Z" fill="var(--tie)"/>
+    </symbol>
+    <!-- C: line art -->
+    <symbol id="figC" viewBox="0 0 240 260">
+      <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 256 L26 130 Q30 84 68 70 L104 56"/>
+        <path d="M136 56 L172 70 Q210 84 214 130 L220 256"/>
+        <path d="M104 56 L92 112 L120 170 L148 112 L136 56"/>
+        <path d="M120 170 L120 256"/>
+        <path d="M96 52 Q120 62 144 52"/>
+        <path fill="var(--bg)" d="M44 152 C58 144 70 144 78 146 L80 118 C81 104 96 104 95 118 L94 148 C108 152 120 160 126 168 C130 176 124 184 116 182 L62 180"/>
+        <path d="M82 162 L118 170"/>
+      </g>
+      <path d="M113 60 L127 60 L124.5 72 L115.5 72 Z" fill="var(--red)"/>
+      <path d="M115.5 74 L124.5 74 L130 138 L120 152 L110 138 Z" fill="var(--red)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <h1>Logo Gérard&nbsp;&amp;&nbsp;Fils<br>quatre pistes</h1>
+  <p>Même idée qu’aujourd’hui (le costume, la cravate rouge, la main tendue), dessinée en formes nettes et vectorielles. Chaque piste est montrée sur fond clair, sur fond noir et en petite icône.</p>
+</header>
+
+<div class="orig"><img src="../public/media/logo-dark.png" alt="Logo actuel"><span>Logo actuel, pour comparer</span></div>
+
+<div class="grid">
+
+  <!-- A -->
+  <section class="card">
+    <div class="stage">
+      <div class="light">
+        <div class="lockup">
+          <div class="wm"><small>Déménagement</small><strong>Gerard<br><em>&amp;</em> fils</strong></div>
+          <svg width="120" height="130" style="color:var(--ink);--bg:var(--cream)"><use href="#figA"/></svg>
+        </div>
+      </div>
+      <div class="dark">
+        <svg width="150" height="162" style="color:var(--cream);--bg:var(--ink)"><use href="#figA"/></svg>
+        <div class="icons"><svg width="34" height="37" style="color:var(--cream);--bg:var(--ink)"><use href="#figA"/></svg></div>
+      </div>
+    </div>
+    <div class="meta"><b>A</b><div><h2>Silhouette nette</h2><p>Le même personnage, sans la texture « photocopie » : aplats, revers dessinés, main simplifiée. Le plus proche de l’actuel, donc le plus facile à faire accepter.</p></div></div>
+  </section>
+
+  <!-- B -->
+  <section class="card">
+    <div class="stage">
+      <div class="light">
+        <div class="lockup">
+          <svg width="92" height="92" style="--box:var(--ink);--shirt:var(--cream);--tie:var(--red)"><use href="#markB"/></svg>
+          <div class="wm"><small>Déménagement</small><strong style="white-space:nowrap;font-size:38px">Gerard <em>&amp;</em> fils</strong></div>
+        </div>
+      </div>
+      <div class="dark">
+        <svg width="130" height="130" style="--box:var(--cream);--shirt:var(--ink);--tie:var(--red)"><use href="#markB"/></svg>
+        <div class="icons">
+          <svg width="32" height="32" style="--box:var(--cream);--shirt:var(--ink);--tie:var(--red)"><use href="#markB"/></svg>
+          <svg width="18" height="18" style="--box:var(--cream);--shirt:var(--ink);--tie:var(--red)"><use href="#markB"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="meta"><b>B</b><div><h2>Col &amp; cravate</h2><p>On garde seulement le col et la cravate rouge, dans un carré arrondi. Très moderne, lisible même en favicon, sur un camion ou en photo de profil.</p></div></div>
+  </section>
+
+  <!-- C -->
+  <section class="card">
+    <div class="stage">
+      <div class="light">
+        <div class="lockup">
+          <svg width="120" height="130" style="color:var(--ink);--bg:var(--cream)"><use href="#figC"/></svg>
+          <div class="wm"><small>Déménagement</small><strong>Gerard<br><em>&amp;</em> fils</strong></div>
+        </div>
+      </div>
+      <div class="dark">
+        <svg width="150" height="162" style="color:var(--cream);--bg:var(--ink)"><use href="#figC"/></svg>
+      </div>
+    </div>
+    <div class="meta"><b>C</b><div><h2>Trait continu</h2><p>Le personnage dessiné au trait, seule la cravate est pleine. Plus léger et élégant, dans l’esprit des marques artisanales actuelles.</p></div></div>
+  </section>
+
+  <!-- D -->
+  <section class="card">
+    <div class="stage">
+      <div class="light">
+        <svg width="210" height="210" viewBox="0 0 200 200" style="--box:var(--ink);--shirt:var(--cream);--tie:var(--red)">
+          <defs><path id="ring" d="M100 100 m-74 0 a74 74 0 1 1 148 0 a74 74 0 1 1 -148 0"/></defs>
+          <circle cx="100" cy="100" r="96" fill="var(--ink)"/>
+          <circle cx="100" cy="100" r="88" fill="none" stroke="var(--cream)" stroke-width="1" opacity=".35"/>
+          <text font-family="Figtree" font-weight="600" font-size="12.5" letter-spacing="2" fill="var(--cream)">
+            <textPath href="#ring" startOffset="0" textLength="458" lengthAdjust="spacing">DÉMÉNAGEMENT · GERARD &amp; FILS · BRUXELLES ·</textPath>
+          </text>
+          <svg x="62" y="62" width="76" height="76"><use href="#markB" style="--box:var(--ink);--shirt:var(--cream);--tie:var(--red)"/></svg>
+        </svg>
+      </div>
+      <div class="dark">
+        <svg width="170" height="170" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="96" fill="var(--red)"/>
+          <circle cx="100" cy="100" r="88" fill="none" stroke="var(--cream)" stroke-width="1" opacity=".45"/>
+          <text font-family="Figtree" font-weight="600" font-size="12.5" letter-spacing="2" fill="var(--cream)">
+            <textPath href="#ring" startOffset="0" textLength="458" lengthAdjust="spacing">DÉMÉNAGEMENT · GERARD &amp; FILS · BRUXELLES ·</textPath>
+          </text>
+          <svg x="62" y="62" width="76" height="76"><use href="#markB" style="--box:var(--red);--shirt:var(--cream);--tie:var(--ink)"/></svg>
+        </svg>
+      </div>
+    </div>
+    <div class="meta"><b>D</b><div><h2>Tampon</h2><p>Le symbole B dans un sceau rond, comme un cachet « approuvé ». Pour les cartons, les autocollants, les réseaux sociaux. Se combine avec A ou B.</p></div></div>
+  </section>
+
+</div>
+</body>
+</html>
