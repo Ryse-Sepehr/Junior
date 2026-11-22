@@ -1,0 +1,27 @@
+SITE DÉMÉNAGEMENT GÉRARD & FILS : COMMENT LE VOIR
+==================================================
+
+1. Installer Node.js (version 20 ou plus) : https://nodejs.org (bouton "LTS").
+
+2. Ouvrir un terminal dans ce dossier (gerard-fils), puis taper :
+
+     npm install
+     npm run dev
+
+3. Ouvrir dans le navigateur :
+
+     http://localhost:3000        (français)
+     http://localhost:3000/nl/    (néerlandais)
+     http://localhost:3000/en/    (anglais)
+
+   Écran de remerciement du formulaire, sans rien envoyer :
+     http://localhost:3000/devis-demenagement/?apercu=merci
+
+À SAVOIR
+- L'envoi du formulaire de devis ne fonctionne qu'une fois le site en ligne sur Netlify.
+  En local, un message d'erreur est normal.
+- La vidéo d'accueil se trouve dans public/video/hero.mp4 (on peut la remplacer
+  par un autre fichier .mp4 du même nom).
+- Logo final (PNG clair / foncé, médaillon SVG) : dossier logo-final/
+- Pistes de logo étudiées : dossier logo-concepts/
+- Détails techniques : README.md
